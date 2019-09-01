@@ -27,7 +27,7 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
         training_accuracy = []
         validation_accuracy = []
         for i in tqdm(range(iterations)):
-            classifier=Classifier(32,i,hm,'adam')
+            classifier=Classifier(i,hm,'adam',[])
             history=classifier.fit(training_set,training_labels,
                                    validation_data=[validation_set,validation_labels],
                                    epochs=epochs,batch_size=40,verbose=0)
@@ -83,4 +83,6 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
             indeces.append(np.sort(index))
         limits = best_hp
         temp_p_values = p_values
+    
+    np.save('final',final)
     return temp_general_perf,temp_general_perf2,old_general_perf,old_general_perf2,final
