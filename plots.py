@@ -5,13 +5,14 @@ Created on Sun Sep  1 17:53:18 2019
 @author: Fede
 """
 import numpy as np
+import os
 import matplotlib.pyplot as plt
 import plotly
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 from sklearn.metrics import confusion_matrix,accuracy_score
 
-def plot_IAHOS(y,ogp,ogp2,tgp,tgp2):
+def plot_IAHOS(y,ogp,ogp2,tgp,tgp2,model):
     fig = make_subplots(rows=2, cols=2,subplot_titles=("Mean train. accuracy first round",
                                                    "Mean valid accuracy first round",
                                                   "Mean train accuracy last round",
@@ -32,10 +33,13 @@ def plot_IAHOS(y,ogp,ogp2,tgp,tgp2):
                        x=x,
                        z=tgp,colorscale=Colorscale),row=2,col=2)
     fig.update_layout(height=600, width=800)
-    
+    if not os.path.exists("images"):
+        os.mkdir("images")
+    fig.write_image('images/IAHOS_'+str(model)+'.png')
     fig.show()
+
     
-def plot_confusion_matrix(new_test_labels,y_pred,words_name):
+def plot_confusion_matrix(new_test_labels,y_pred,words_name,model):
     cm = confusion_matrix(y_true=new_test_labels,y_pred=y_pred)
     cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     plt.figure(figsize=(6,6))
@@ -48,6 +52,9 @@ def plot_confusion_matrix(new_test_labels,y_pred,words_name):
     plt.xlabel('Predicted')
     plt.ylabel('True')
     plt.title('Confusion matrix')
+    if not os.path.exists("images"):
+        os.mkdir("images")
+    plt.savefig('images/confusion_matrix_'+str(model)+'.png')
     plt.show()
     
 def plot_training_accuracy(training_accuracy,optimizers,model):
@@ -58,7 +65,11 @@ def plot_training_accuracy(training_accuracy,optimizers,model):
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.legend(optimizers)
-    plt.savefig('Training_accuracy'+str(model))
+    plt.ylim(0.7, 1)
+    plt.grid(True)
+    if not os.path.exists("images"):
+        os.mkdir("images")
+    plt.savefig('images/Training_accuracy'+str(model))
     plt.show()
 
 def plot_validation_accuracy(validation_accuracy,optimizers,model):
@@ -69,10 +80,14 @@ def plot_validation_accuracy(validation_accuracy,optimizers,model):
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.legend(optimizers)
-    plt.savefig('Validation accuracy'+str(model))
+    plt.ylim(0.7, 1)
+    plt.grid(True)
+    if not os.path.exists("images"):
+        os.mkdir("images")
+    plt.savefig('images/Validation_accuracy'+str(model))
     plt.show()
     
-def plot_test_scores(scores,y):
+def plot_test_scores(scores,y,model):
     fig = go.Figure(data=[go.Bar(name='radam', x=scores, y=y[0]),
                       go.Bar(name='sgd', x=scores, y=y[1]),
                       go.Bar(name='rmsprop', x=scores, y=y[2]),
@@ -81,7 +96,10 @@ def plot_test_scores(scores,y):
                       go.Bar(name='adam', x=scores, y=y[5]),
                       go.Bar(name='adamax', x=scores, y=y[6]),
                       go.Bar(name='nadam', x=scores, y=y[7]),])
-    fig.update_layout(barmode='group')
+    fig.update_layout(barmode='group',width=800)
+    if not os.path.exists("images"):
+        os.mkdir("images")
+    fig.write_image('images/test_scores_'+str(model)+'.png')
     fig.show()
     
 def plot_output_NN(words_name,classifier,audio_signal):

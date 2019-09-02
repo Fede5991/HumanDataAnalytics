@@ -30,7 +30,7 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
             classifier=Classifier(i,hm,'adam',[])
             history=classifier.fit(training_set,training_labels,
                                    validation_data=[validation_set,validation_labels],
-                                   epochs=epochs,batch_size=40,verbose=0)
+                                   epochs=epochs,batch_size=128,verbose=0)
     
             training_accuracy.append(history.history['acc'][-1])
             validation_accuracy.append(history.history['val_acc'][-1])
