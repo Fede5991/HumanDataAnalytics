@@ -27,7 +27,7 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
         training_accuracy = []
         validation_accuracy = []
         for i in tqdm(range(iterations)):
-            classifier=Classifier(i,hm,'adam',[])
+            classifier=Classifier(i,hm,'adam',[],'train')
             history=classifier.fit(training_set,training_labels,
                                    validation_data=[validation_set,validation_labels],
                                    epochs=epochs,batch_size=128,verbose=0)
