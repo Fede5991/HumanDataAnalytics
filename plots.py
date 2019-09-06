@@ -12,15 +12,21 @@ import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 from sklearn.metrics import confusion_matrix,accuracy_score
 
-def plot_IAHOS(y,ogp,ogp2,tgp,tgp2,model):
-    fig = make_subplots(rows=2, cols=2,subplot_titles=("Mean train. accuracy first round",
-                                                   "Mean valid accuracy first round",
-                                                  "Mean train accuracy last round",
-                                                  "Mean valid accuracy last round"))
+def plot_IAHOS(y, ogp, ogp2, tgp, tgp2, model):
 
-    x = np.linspace(0,len(tgp[0])-1,len(tgp[0]))
+    sp_titles = ("Mean train. accuracy first round",
+                 "Mean valid accuracy first round",
+                 "Mean train accuracy last round",
+                 "Mean valid accuracy last round")
+
+    n_rows = 2
+    n_cols = 2
+
+    fig = make_subplots(rows = n_rows, cols = n_cols, subplot_titles=sp_titles)
+
+    x = np.linspace(0, len(tgp[0]) - 1, len(tgp[0]))
     Colorscale = [[0, '#FF0000'],[0.5, '#F1C40F'], [1, '#00FF00']]
-    fig.add_trace(go.Heatmap(y=[y[i] for i in range(len(y))],
+    fig.add_trace(go.Heatmap(y = [y[i] for i in range(len(y))],
                        x=[0,1],
                        z=ogp2, colorscale = Colorscale),row=1,col=1)
     fig.add_trace(go.Heatmap(y=[y[i] for i in range(len(y))],
@@ -38,7 +44,7 @@ def plot_IAHOS(y,ogp,ogp2,tgp,tgp2,model):
     fig.write_image('images/IAHOS_'+str(model)+'.png')
     fig.show()
 
-    
+
 def plot_confusion_matrix(new_test_labels,y_pred,words_name,model):
     cm = confusion_matrix(y_true=new_test_labels,y_pred=y_pred)
     cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
@@ -56,11 +62,11 @@ def plot_confusion_matrix(new_test_labels,y_pred,words_name,model):
         os.mkdir("images")
     plt.savefig('images/confusion_matrix_'+str(model)+'.png')
     plt.show()
-    
+
 def plot_training_accuracy(training_accuracy,optimizers,model):
     plt.figure(figsize=(12,4))
     for i in range(len(optimizers)):
-        plt.plot(training_accuracy[i]) 
+        plt.plot(training_accuracy[i])
     plt.title('Training accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
@@ -75,7 +81,7 @@ def plot_training_accuracy(training_accuracy,optimizers,model):
 def plot_validation_accuracy(validation_accuracy,optimizers,model):
     plt.figure(figsize=(12,4))
     for i in range(len(optimizers)):
-        plt.plot(validation_accuracy[i]) 
+        plt.plot(validation_accuracy[i])
     plt.title('Validation accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
@@ -86,7 +92,7 @@ def plot_validation_accuracy(validation_accuracy,optimizers,model):
         os.mkdir("images")
     plt.savefig('images/Validation_accuracy'+str(model))
     plt.show()
-    
+
 def plot_test_scores(scores,y,model):
     fig = go.Figure(data=[go.Bar(name='radam', x=scores, y=y[0]),
                       go.Bar(name='sgd', x=scores, y=y[1]),
@@ -101,7 +107,7 @@ def plot_test_scores(scores,y,model):
         os.mkdir("images")
     fig.write_image('images/test_scores_'+str(model)+'.png')
     fig.show()
-    
+
 def plot_output_NN(words_name,classifier,audio_signal):
     plt.figure(figsize=(14,4))
     plt.bar(words_name,classifier.predict(audio_signal)[0])
