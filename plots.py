@@ -94,14 +94,14 @@ def plot_validation_accuracy(validation_accuracy,optimizers,model):
     plt.show()
 
 def plot_test_scores(scores,y,model):
-    fig = go.Figure(data=[go.Bar(name='radam', x=scores, y=y[0]),
-                      go.Bar(name='sgd', x=scores, y=y[1]),
-                      go.Bar(name='rmsprop', x=scores, y=y[2]),
-                      go.Bar(name='adagrad', x=scores, y=y[3]),
-                      go.Bar(name='adadelta', x=scores, y=y[4]),
-                      go.Bar(name='adam', x=scores, y=y[5]),
-                      go.Bar(name='adamax', x=scores, y=y[6]),
-                      go.Bar(name='nadam', x=scores, y=y[7]),])
+    fig = go.Figure(data=[go.Bar(name='radam', x=scores, y=y[0],text=y[0]),
+                      go.Bar(name='sgd', x=scores, y=y[1],text=y[1]),
+                      go.Bar(name='rmsprop', x=scores, y=y[2],text=y[2]),
+                      go.Bar(name='adagrad',x=scores,y=y[3],text=y[3]),
+                      go.Bar(name='adadelta', x=scores, y=y[4],text=y[4]),
+                      go.Bar(name='adam', x=scores, y=y[5],text=y[5]),
+                      go.Bar(name='adamax', x=scores, y=y[6],text=y[6]),
+                      go.Bar(name='nadam', x=scores, y=y[7],text=y[7])])
     fig.update_layout(barmode='group',width=800)
     if not os.path.exists("images"):
         os.mkdir("images")
@@ -116,3 +116,36 @@ def plot_output_NN(words_name,classifier,audio_signal):
     plt.ylabel('Probability')
     plt.xticks(rotation=90)
     plt.show()
+<<<<<<< HEAD
+=======
+    
+def plot_AE_pre(Epochs,train_loss,val_loss,params,name_param):
+    last=int(Epochs[-1])
+    fig,ax = plt.subplots(nrows=1,ncols=2,figsize=(12,4))
+    plt.setp(ax.flat, xlabel='Epochs', ylabel='Accuracy')
+    ax[0].set_title('Training accuracy w.r.t.'+name_param)
+    for i in range(3):
+        ax[0].plot(Epochs, train_loss[i],label=params[i])
+    ax[0].legend()
+
+    ax[1].set_title('Validation accuracy w.r.t.'+name_param)
+    for i in range(3):
+        plt.plot(Epochs, val_loss[i],label=params[i])
+    ax[1].legend()
+    plt.savefig('Train and val accuracy wrt'+name_param)
+    plt.show()
+
+    fig,ax = plt.subplots(nrows=1,ncols=2,figsize=(12,4))
+    plt.setp(ax.flat, xlabel='last epochs', ylabel='Accuracy')
+    ax[0].set_title('Training accuracy w.r.t. '+name_param+' last epochs')
+    for i in range(3):
+        ax[0].plot(Epochs[last-10:], train_loss[i][last-10:],label=params[i])
+    ax[0].legend()
+
+    ax[1].set_title('Val accuracy w.r.t. '+name_param+' last epochs')
+    for i in range(3):
+        plt.plot(Epochs[last-10:], val_loss[i][last-10:],label=params[i])
+    ax[1].legend()
+    plt.savefig('Train and val accuracy last epochs wrt '+name_param)
+    plt.show()
+>>>>>>> 6f5b30a532eb2d4cbc7c6481eec923413c2fda76
