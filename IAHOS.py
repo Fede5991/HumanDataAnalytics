@@ -16,22 +16,25 @@ from keras import initializers,optimizers,backend as k
 from time import time
 
 def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
-          training_set,training_labels,validation_set,validation_labels):
+          training_set,training_labels,validation_set,validation_labels,
+          feature, batch_size):
     for r in range(rounds):
         print ("Round ",r+1," of ",rounds)
         epochs=1
         if r>0:
             attempts=2
         hm,p_values = hyperparams_initialization(attempts,variables,method,limits,r)
+
+        network_input = [training_set.shape[1], training_set.shape[2]]
     
         training_accuracy = []
         validation_accuracy = []
         for i in tqdm(range(iterations)):
-            classifier=Classifier(i,hm,'adam',[],'train')
+            classifier=Classifier(i, network_input, training_labels.shape[1], feature, hm, 'adam', [], 'train')
             history=classifier.fit(training_set,training_labels,
                                    validation_data=[validation_set,validation_labels],
-                                   epochs=epochs,batch_size=128,verbose=0)
-    
+                                   epochs=epochs,batch_size=batch_size,verbose=0)
+
             training_accuracy.append(history.history['acc'][-1])
             validation_accuracy.append(history.history['val_acc'][-1])
             del classifier
@@ -40,7 +43,7 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
         general_perf,general_perf2=extraction_performances(validation_accuracy,training_accuracy,variables,iterations,attempts)
         del training_accuracy
         del validation_accuracy
-        
+
         if r==0:
             old_general_perf = general_perf
             old_general_perf2 = general_perf2
@@ -63,7 +66,7 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
                 new_values2.append(np.insert(temp_general_perf2[t],indeces[t][1],general_perf2[t]))
             temp_general_perf=new_values
             temp_general_perf2=new_values2
-        
+
         indeces = []
         best_hp=[]
         final = []
@@ -83,6 +86,6 @@ def IAHOS(rounds,method,limits,attempts,variables,iterations,Classifier,
             indeces.append(np.sort(index))
         limits = best_hp
         temp_p_values = p_values
-    
-    np.save('final',final)
+
+    #np.save('final',final)
     return temp_general_perf,temp_general_perf2,old_general_perf,old_general_perf2,final

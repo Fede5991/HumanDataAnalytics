@@ -44,8 +44,43 @@ def plot_IAHOS(y, ogp, ogp2, tgp, tgp2, model):
     fig.write_image('images/IAHOS_'+str(model)+'.png')
     fig.show()
 
+def plot_confusion_matrix(new_test_labels, y_pred, words_name, feature,optimizer, root):
+    title = 'Normalized confusion matrix'
 
-def plot_confusion_matrix(new_test_labels,y_pred,words_name,model):
+    cm = confusion_matrix(y_true=new_test_labels,y_pred=y_pred)
+    cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    fig, ax = plt.subplots(figsize = (10,8), facecolor=(1, 1, 1))
+    im = ax.imshow(cm, interpolation='nearest', cmap=plt.cm.jet)
+    ax.figure.colorbar(im, ax=ax)
+    # We want to show all ticks...
+    ax.set(xticks=np.arange(cm.shape[1]),
+           yticks=np.arange(cm.shape[0]),
+           # ... and label them with the respective list entries
+           xticklabels=words_name, yticklabels=words_name,
+           title=title,
+           ylabel='True word',
+           xlabel='Predicted word')
+
+    # Rotate the tick labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+             rotation_mode="anchor")
+
+    # Loop over data dimensions and create text annotations.
+    fmt = '.2f'
+    thresh = cm.max() / 2.
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            if i == j:
+                ax.text(j, i, format(cm[i, j], fmt),
+                        ha="center", va="center",
+                        color="black" if cm[i, j] > thresh else "black")
+    fig.tight_layout()
+    plt.savefig(root + '/confusion_matrix_' + str(feature) + '_' + optimizer + '.png')
+    plt.clf()
+
+
+'''
+def plot_confusion_matrix(new_test_labels, y_pred, words_name, model, root):
     cm = confusion_matrix(y_true=new_test_labels,y_pred=y_pred)
     cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     plt.figure(figsize=(6,6))
@@ -58,11 +93,9 @@ def plot_confusion_matrix(new_test_labels,y_pred,words_name,model):
     plt.xlabel('Predicted')
     plt.ylabel('True')
     plt.title('Confusion matrix')
-    if not os.path.exists("images"):
-        os.mkdir("images")
-    plt.savefig('images/confusion_matrix_'+str(model)+'.png')
+    plt.savefig(root + '/confusion_matrix_'+str(model)+'.png')
     plt.show()
-
+'''
 def plot_training_accuracy(training_accuracy,optimizers,model):
     plt.figure(figsize=(12,4))
     for i in range(len(optimizers)):
@@ -116,9 +149,7 @@ def plot_output_NN(words_name,classifier,audio_signal):
     plt.ylabel('Probability')
     plt.xticks(rotation=90)
     plt.show()
-<<<<<<< HEAD
-=======
-    
+
 def plot_AE_pre(Epochs,train_loss,val_loss,params,name_param):
     last=int(Epochs[-1])
     fig,ax = plt.subplots(nrows=1,ncols=2,figsize=(12,4))
@@ -148,4 +179,3 @@ def plot_AE_pre(Epochs,train_loss,val_loss,params,name_param):
     ax[1].legend()
     plt.savefig('Train and val accuracy last epochs wrt '+name_param)
     plt.show()
->>>>>>> 6f5b30a532eb2d4cbc7c6481eec923413c2fda76

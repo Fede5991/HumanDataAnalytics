@@ -17,7 +17,7 @@ def mfcc(signal, samplerate=16000, winlen=0.025, winstep=0.01, numcep=12,
 
     logfeat = logfbank(signal, samplerate, winlen, winstep, nfilt, nfft, lowfreq, highfreq, preemph)
     feat = dct(logfeat, type=2, axis=1, norm='ortho')[:,:numcep]
-    feat = lifter(logfeat, ceplifter)
+    feat = lifter(feat, ceplifter)
     return feat
 
 def logfbank(signal, samplerate=16000, winlen=0.025, winstep=0.01,
@@ -27,7 +27,7 @@ def logfbank(signal, samplerate=16000, winlen=0.025, winstep=0.01,
     highfreq = highfreq or samplerate/2
     signal = sigproc.preemphasis(signal, preemph)
     frames = sigproc.framesig(signal, winlen*samplerate, winstep*samplerate, winfunc=hamming_window)
-    pspec = sigproc.powspec(frames,nfft)
+    pspec = sigproc.powspec(frames, nfft)
     energy = np.sum(pspec,1) # this stores the total energy in each frame
     energy = np.where(energy == 0,np.finfo(float).eps,energy) # if energy is zero, we get problems with log
 
