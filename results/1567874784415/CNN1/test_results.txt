@@ -1,0 +1,54 @@
+Final parameters = [[4.40000000e+01]
+ [4.66666667e+00]
+ [1.66666667e+00]
+ [6.66666667e-01]
+ [4.33333333e+01]
+ [3.33333333e+00]
+ [1.66666667e+00]
+ [3.50000000e+02]
+ [1.66666667e-01]]
+### FILTER_BANKS ###
+radamval score = 0.7801075268817205 in epoch 61, inference time = 3029 ms 
+sgdval score = 0.7804301075268817 in epoch 97, inference time = 799 ms 
+rmspropval score = 0.760752688172043 in epoch 55, inference time = 1530 ms 
+adagradval score = 0.7872043010752688 in epoch 60, inference time = 775 ms 
+adadeltaval score = 0.7813978494623656 in epoch 73, inference time = 771 ms 
+adamval score = 0.775483870967742 in epoch 41, inference time = 743 ms 
+adamaxval score = 0.781505376344086 in epoch 67, inference time = 721 ms 
+nadamval score = 0.7756989247311828 in epoch 49, inference time = 776 ms 
+Final parameters = [[4.40000000e+01]
+ [4.66666667e+00]
+ [1.66666667e+00]
+ [6.66666667e-01]
+ [4.33333333e+01]
+ [4.66666667e+00]
+ [1.66666667e+00]
+ [3.50000000e+02]
+ [1.66666667e-01]]
+### MFCC ###
+radamval score = 0.7532258064516129 in epoch 89, inference time = 586 ms 
+sgdval score = 0.7467741935483871 in epoch 94, inference time = 571 ms 
+rmspropval score = 0.754731182795699 in epoch 52, inference time = 742 ms 
+adagradval score = 0.7704301075268817 in epoch 68, inference time = 655 ms 
+adadeltaval score = 0.7548387096774194 in epoch 50, inference time = 715 ms 
+adamval score = 0.752258064516129 in epoch 52, inference time = 629 ms 
+adamaxval score = 0.7532258064516129 in epoch 95, inference time = 761 ms 
+nadamval score = 0.7476344086021506 in epoch 27, inference time = 725 ms 
+Final parameters = [[4.40000000e+01]
+ [4.66666667e+00]
+ [1.33333333e+00]
+ [6.66666667e-01]
+ [2.26666667e+01]
+ [4.66666667e+00]
+ [1.66666667e+00]
+ [3.50000000e+02]
+ [1.66666667e-01]]
+### MFCC_DELTAS ###
+radamval score = 0.7545161290322581 in epoch 10, inference time = 843 ms 
+sgdval score = 0.7305376344086021 in epoch 82, inference time = 823 ms 
+rmspropval score = 0.7496774193548387 in epoch 7, inference time = 857 ms 
+adagradval score = 0.7743010752688172 in epoch 86, inference time = 840 ms 
+adadeltaval score = 0.7478494623655914 in epoch 67, inference time = 973 ms 
+adamval score = 0.725268817204301 in epoch 19, inference time = 904 ms 
+adamaxval score = 0.7335483870967742 in epoch 91, inference time = 832 ms 
+nadamval score = 0.7364516129032258 in epoch 29, inference time = 860 ms 

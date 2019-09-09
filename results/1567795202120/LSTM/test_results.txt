@@ -1,0 +1,27 @@
+### FILTER_BANKS ###
+radamval score = 0.8992 in epoch 32, inference time = 5311 ms 
+sgdval score = 0.8456 in epoch 45, inference time = 2884 ms 
+rmspropval score = 0.9176 in epoch 34, inference time = 2889 ms 
+adagradval score = 0.9136 in epoch 47, inference time = 3574 ms 
+adadeltaval score = 0.9112 in epoch 48, inference time = 3021 ms 
+adamval score = 0.926 in epoch 15, inference time = 3133 ms 
+adamaxval score = 0.9256 in epoch 27, inference time = 2969 ms 
+nadamval score = 0.9432 in epoch 45, inference time = 3068 ms 
+### MFCC ###
+radamval score = 0.9132 in epoch 21, inference time = 3212 ms 
+sgdval score = 0.8652 in epoch 49, inference time = 3204 ms 
+rmspropval score = 0.912 in epoch 46, inference time = 3225 ms 
+adagradval score = 0.9248 in epoch 49, inference time = 3616 ms 
+adadeltaval score = 0.9248 in epoch 19, inference time = 3270 ms 
+adamval score = 0.9096 in epoch 28, inference time = 3480 ms 
+adamaxval score = 0.8856 in epoch 23, inference time = 3369 ms 
+nadamval score = 0.9288 in epoch 17, inference time = 3378 ms 
+### MFCC_DELTAS ###
+radamval score = 0.884 in epoch 43, inference time = 8279 ms 
+sgdval score = 0.7876 in epoch 45, inference time = 9004 ms 
+rmspropval score = 0.9244 in epoch 44, inference time = 9065 ms 
+adagradval score = 0.2 in epoch 0, inference time = 8370 ms 
+adadeltaval score = 0.904 in epoch 31, inference time = 8438 ms 
+adamval score = 0.9036 in epoch 27, inference time = 9513 ms 
+adamaxval score = 0.9016 in epoch 48, inference time = 8293 ms 
+nadamval score = 0.9024 in epoch 21, inference time = 9346 ms 

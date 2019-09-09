@@ -1,0 +1,6 @@
+### FILTER_BANKS ###
+radamval score = 0.8378494623655914 in epoch 49, inference time = 9817 ms 
+### MFCC ###
+radamval score = 0.8354838709677419 in epoch 49, inference time = 10469 ms 
+### MFCC_DELTAS ###
+radamval score = 0.8295698924731183 in epoch 35, inference time = 27567 ms 

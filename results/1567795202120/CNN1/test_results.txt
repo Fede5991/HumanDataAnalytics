@@ -1,0 +1,54 @@
+Final parameters = [[4.40000000e+01]
+ [4.66666667e+00]
+ [1.66666667e+00]
+ [6.66666667e-01]
+ [2.26666667e+01]
+ [3.33333333e+00]
+ [1.66666667e+00]
+ [2.00000000e+02]
+ [1.66666667e-01]]
+### FILTER_BANKS ###
+radamval score = 0.9028 in epoch 64, inference time = 3004 ms 
+sgdval score = 0.9 in epoch 90, inference time = 230 ms 
+rmspropval score = 0.9068 in epoch 82, inference time = 232 ms 
+adagradval score = 0.8972 in epoch 42, inference time = 221 ms 
+adadeltaval score = 0.9108 in epoch 51, inference time = 364 ms 
+adamval score = 0.8976 in epoch 75, inference time = 204 ms 
+adamaxval score = 0.9056 in epoch 86, inference time = 207 ms 
+nadamval score = 0.8928 in epoch 37, inference time = 226 ms 
+Final parameters = [[ 24.        ]
+ [  4.66666667]
+ [  1.33333333]
+ [  0.66666667]
+ [ 22.66666667]
+ [  4.66666667]
+ [  1.33333333]
+ [200.        ]
+ [  0.33333333]]
+### MFCC ###
+radamval score = 0.8992 in epoch 87, inference time = 226 ms 
+sgdval score = 0.8836 in epoch 90, inference time = 220 ms 
+rmspropval score = 0.8868 in epoch 77, inference time = 198 ms 
+adagradval score = 0.8988 in epoch 96, inference time = 223 ms 
+adadeltaval score = 0.8924 in epoch 81, inference time = 247 ms 
+adamval score = 0.898 in epoch 48, inference time = 212 ms 
+adamaxval score = 0.9016 in epoch 93, inference time = 213 ms 
+nadamval score = 0.8832 in epoch 81, inference time = 249 ms 
+Final parameters = [[ 24.        ]
+ [  4.66666667]
+ [  1.66666667]
+ [  0.66666667]
+ [ 22.66666667]
+ [  3.33333333]
+ [  1.66666667]
+ [200.        ]
+ [  0.33333333]]
+### MFCC_DELTAS ###
+radamval score = 0.9044 in epoch 63, inference time = 273 ms 
+sgdval score = 0.9052 in epoch 99, inference time = 262 ms 
+rmspropval score = 0.8948 in epoch 75, inference time = 296 ms 
+adagradval score = 0.8936 in epoch 89, inference time = 269 ms 
+adadeltaval score = 0.8876 in epoch 55, inference time = 285 ms 
+adamval score = 0.898 in epoch 94, inference time = 313 ms 
+adamaxval score = 0.8884 in epoch 93, inference time = 298 ms 
+nadamval score = 0.8964 in epoch 47, inference time = 320 ms 

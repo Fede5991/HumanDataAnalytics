@@ -1,0 +1,54 @@
+Final parameters = [[ 44.        ]
+ [  7.33333333]
+ [ 14.        ]
+ [  1.66666667]
+ [  2.33333333]
+ [  8.        ]
+ [  2.66666667]
+ [200.        ]
+ [  0.        ]]
+### FILTER_BANKS ###
+radamval score = 0.8006451612903226 in epoch 9, inference time = 3879 ms 
+sgdval score = 0.7995698924731183 in epoch 43, inference time = 960 ms 
+rmspropval score = 0.7859139784946236 in epoch 42, inference time = 986 ms 
+adagradval score = 0.7221505376344086 in epoch 21, inference time = 992 ms 
+adadeltaval score = 0.7806451612903226 in epoch 34, inference time = 1024 ms 
+adamval score = 0.7945161290322581 in epoch 4, inference time = 984 ms 
+adamaxval score = 0.7919354838709678 in epoch 10, inference time = 967 ms 
+nadamval score = 0.7483870967741936 in epoch 5, inference time = 1006 ms 
+Final parameters = [[ 44.        ]
+ [  2.33333333]
+ [  7.33333333]
+ [  1.33333333]
+ [  2.33333333]
+ [  8.        ]
+ [  2.33333333]
+ [200.        ]
+ [  0.        ]]
+### MFCC ###
+radamval score = 0.7450537634408602 in epoch 30, inference time = 794 ms 
+sgdval score = 0.7273118279569892 in epoch 49, inference time = 644 ms 
+rmspropval score = 0.7402150537634409 in epoch 25, inference time = 705 ms 
+adagradval score = 0.7047311827956989 in epoch 22, inference time = 662 ms 
+adadeltaval score = 0.7367741935483871 in epoch 41, inference time = 670 ms 
+adamval score = 0.7346236559139785 in epoch 10, inference time = 692 ms 
+adamaxval score = 0.7480645161290322 in epoch 10, inference time = 744 ms 
+nadamval score = 0.7326881720430107 in epoch 36, inference time = 752 ms 
+Final parameters = [[ 4.]
+ [ 2.]
+ [ 2.]
+ [ 1.]
+ [ 3.]
+ [16.]
+ [ 2.]
+ [50.]
+ [ 0.]]
+### MFCC_DELTAS ###
+radamval score = 0.6913978494623656 in epoch 13, inference time = 768 ms 
+sgdval score = 0.6779569892473118 in epoch 46, inference time = 786 ms 
+rmspropval score = 0.6637634408602151 in epoch 18, inference time = 818 ms 
+adagradval score = 0.03225806451612903 in epoch 0, inference time = 881 ms 
+adadeltaval score = 0.661505376344086 in epoch 25, inference time = 765 ms 
+adamval score = 0.10086021505376344 in epoch 46, inference time = 811 ms 
+adamaxval score = 0.31408602150537634 in epoch 49, inference time = 792 ms 
+nadamval score = 0.5961290322580645 in epoch 25, inference time = 819 ms 
